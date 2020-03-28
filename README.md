@@ -2,7 +2,7 @@
 
 Gestionale di ordini Just per Anna
 
-## Development
+## Development (or Plone for dummies)
 
 ### New add-on
 
