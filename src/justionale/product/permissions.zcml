@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="justionale.product.AddProdotto"
+        title="justionale.product: Add Prodotto"
+    />
+
+
+    <permission
         id="justionale.product.AddCliente"
         title="justionale.product: Add Cliente"
     />
