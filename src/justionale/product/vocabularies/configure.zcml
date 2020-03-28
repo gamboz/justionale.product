@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="justionale.product">
+
+    <!-- -*- extra stuff goes here -*- -->
+
+    <utility
+        component=".clienti.ClientiFactory"
+        name="justionale.product.Clienti"
+    />
+
+
+</configure>
