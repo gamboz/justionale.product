@@ -160,5 +160,9 @@ class IVaso(model.Schema):
 ## This justionale.product
 
 Create new Plone add-on and add 4 content types:
-Prodotto e Cliente (simple Items), Riunione (container) and Ordine
-(addable only inside Riunione) and one vocabulary.
+* Prodotto e Cliente (simple Items),
+* Riunione (container)
+* and Ordine (addable only inside Riunione)
+and two vocabularies:
+* Prodotti e
+* Clienti.
