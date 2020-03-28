@@ -1,0 +1,6 @@
+[report]
+include =
+    src/justionale/*
+omit =
+    */test*
+    */upgrades/*

@@ -1,0 +1,4 @@
+graft src/justionale
+graft docs
+include *.rst
+global-exclude *.pyc
