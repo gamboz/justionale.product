@@ -5,6 +5,12 @@
     <!-- -*- extra stuff goes here -*- -->
 
     <utility
+        component=".prodotti.ProdottiFactory"
+        name="justionale.product.Prodotti"
+    />
+
+
+    <utility
         component=".clienti.ClientiFactory"
         name="justionale.product.Clienti"
     />
