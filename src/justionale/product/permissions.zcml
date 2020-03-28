@@ -6,6 +6,12 @@
   <configure zcml:condition="installed AccessControl.security">
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission
+        id="justionale.product.AddCliente"
+        title="justionale.product: Add Cliente"
+    />
+
+
 
   </configure>
 
