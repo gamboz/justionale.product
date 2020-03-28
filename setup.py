@@ -6,7 +6,7 @@ from setuptools import setup
 
 
 long_description = '\n\n'.join([
-    open('README.rst').read(),
+    open('README.md').read(),
     open('CONTRIBUTORS.rst').read(),
     open('CHANGES.rst').read(),
 ])
@@ -24,8 +24,6 @@ setup(
         "Framework :: Plone :: Addon",
         "Framework :: Plone :: 5.2",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
@@ -35,9 +33,9 @@ setup(
     author_email='gamboz.matteo@zoho.eu',
     url='https://github.com/collective/justionale.product',
     project_urls={
-        'PyPI': 'https://pypi.python.org/pypi/justionale.product',
-        'Source': 'https://github.com/collective/justionale.product',
-        'Tracker': 'https://github.com/collective/justionale.product/issues',
+        # 'PyPI': 'https://pypi.python.org/pypi/justionale.product',
+        'Source': 'https://github.com/gamboz/justionale.product',
+        'Tracker': 'https://github.com/gamboz/justionale.product/issues',
         # 'Documentation': 'https://justionale.product.readthedocs.io/en/latest/',
     },
     license='GPL version 2',
@@ -46,14 +44,15 @@ setup(
     package_dir={'': 'src'},
     include_package_data=True,
     zip_safe=False,
-    python_requires="==2.7, >=3.6",
+    python_requires=">=3.6",
     install_requires=[
         'setuptools',
         # -*- Extra requirements: -*-
-        'z3c.jbot',
-        'plone.api>=1.8.4',
-        'plone.restapi',
+        # 'z3c.jbot',
+        # 'plone.api>=1.8.4',
+        # 'plone.restapi',
         'plone.app.dexterity',
+        'collective.z3cform.datagridfield',
     ],
     extras_require={
         'test': [
