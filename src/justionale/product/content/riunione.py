@@ -6,16 +6,22 @@ from plone.dexterity.content import Container
 from plone.supermodel import model
 # from plone.supermodel.directives import fieldset
 # from z3c.form.browser.radio import RadioFieldWidget
-# from zope import schema
+from zope import schema
 from zope.interface import implementer
 
 
-# from justionale.product import _
+from justionale.product import _
 
 
 class IRiunione(model.Schema):
     """ Marker interface and Dexterity Python Schema for Riunione
     """
+
+    padrona = schema.Choice(
+        title=_(u"Padrona di casa"),
+        source="justionale.product.Clienti",
+    )
+
     # If you want, you can load a xml model created TTW here
     # and customize it in Python:
 
