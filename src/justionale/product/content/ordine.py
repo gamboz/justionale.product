@@ -16,6 +16,12 @@ from justionale.product import _
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 
+from zope.interface import provider
+from zope.schema.interfaces import IContextAwareDefaultFactory
+
+from plone import api
+
+
 clienti_factory = getUtility(
     IVocabularyFactory, 'justionale.product.Clienti')
 ClientiVocabulary = clienti_factory(None)
@@ -23,6 +29,24 @@ ClientiVocabulary = clienti_factory(None)
 prodotti_factory = getUtility(
     IVocabularyFactory, 'justionale.product.Prodotti')
 ProdottiVocabulary = prodotti_factory(None)
+
+
+# https://docs.plone.org/external/plone.app.dexterity/docs/advanced/defaults.html
+# https://training.plone.org/5/mastering-plone/dexterity_reference.html
+@provider(IContextAwareDefaultFactory)
+def getTot(context):
+    # import pdb
+    # pdb.set_trace()
+    tot = 0
+    for row in context.table_rows:
+        prodotto_UID = row['prodotto']
+        # https://training.plone.org/5/mastering-plone/views_3.html
+        brains = api.content.find(UID=prodotto_UID)
+        brain = brains[0]
+        prodotto = brain.getObject()
+        qt = row['qt']
+        tot += qt * prodotto.costo
+    return tot
 
 
 class DGRow(model.Schema):
@@ -40,6 +64,10 @@ class DGRow(model.Schema):
         title=_(u"Note?"),
         required=False,
     )
+    # partial = schema.TextLine(
+    #     title=_(u"Totale parziale"),
+    #     readonly=True,
+    # )
 
 
 class IOrdine(model.Schema):
@@ -50,6 +78,8 @@ class IOrdine(model.Schema):
 
     # model.load('ordine.xml')
 
+    # TODO: switch to "reference"
+    # https://docs.plone.org/external/plone.app.dexterity/docs/advanced/references.html
     cliente = schema.Choice(
         title=_(u"Cliente"),
         source="justionale.product.Clienti",
@@ -61,6 +91,12 @@ class IOrdine(model.Schema):
         value_type=DictRow(
             title=u"One row",  # where is this used?
             schema=DGRow,),
+    )
+
+    tot = schema.Float(
+        title='Totale',
+        readonly=True,
+        defaultFactory=getTot,
     )
 
     # directives.widget(level=RadioFieldWidget)
