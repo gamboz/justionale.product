@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# from plone.app.textfield import RichText
+from plone.app.textfield import RichText
 # from plone.autoform import directives
 from plone.dexterity.content import Item
 # from plone.namedfile import field as namedfile
@@ -21,6 +21,10 @@ class IProdotto(model.Schema):
         required=True,
         min=0.0,
         max=100.0,
+    )
+    note = RichText(
+        title=_(u'Note'),
+        required=False
     )
 
 

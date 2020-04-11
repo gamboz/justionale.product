@@ -35,9 +35,7 @@ ProdottiVocabulary = prodotti_factory(None)
 # https://training.plone.org/5/mastering-plone/dexterity_reference.html
 @provider(IContextAwareDefaultFactory)
 def getTot(context):
-    # import pdb
-    # pdb.set_trace()
-    tot = 0
+    tot = 0.0
     for row in context.table_rows:
         prodotto_UID = row['prodotto']
         # https://training.plone.org/5/mastering-plone/views_3.html
