@@ -137,3 +137,20 @@ class IOrdine(model.Schema):
 class Ordine(Item):
     """
     """
+
+    # Override title
+    # https://stackoverflow.com/a/33196501/1581629
+    # TODO: turn into una-tantum at __init__
+    def makeTitle(self):
+        brains = api.content.find(UID=self.cliente)
+        brain = brains[0]
+        cliente = brain.Title
+        title = f"{cliente}"
+        return title
+
+    def Title(self):
+        return self.makeTitle()
+
+    @property
+    def title(self):
+        return self.makeTitle()
