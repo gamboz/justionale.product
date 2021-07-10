@@ -74,19 +74,19 @@ class Riunione(Container):
     """
     """
 
-    # Override title
-    # https://stackoverflow.com/a/33196501/1581629
-    # TODO: turn into una-tantum at __init__
-    def makeTitle(self):
-        brains = api.content.find(UID=self.padrona)
-        brain = brains[0]
-        padrona = brain.Title
-        title = f"{padrona} - {self.data.strftime('%B %Y')}"
-        return title
+    # # Override title
+    # # https://stackoverflow.com/a/33196501/1581629
+    # # TODO: turn into una-tantum at __init__
+    # def makeTitle(self):
+    #     brains = api.content.find(UID=self.padrona)
+    #     brain = brains[0]
+    #     padrona = brain.Title
+    #     title = f"{padrona} - {self.data.strftime('%B %Y')}"
+    #     return title
 
-    def Title(self):
-        return self.makeTitle()
+    # def Title(self):
+    #     return self.makeTitle()
 
-    @property
-    def title(self):
-        return self.makeTitle()
+    # @property
+    # def title(self):
+    #     return self.makeTitle()

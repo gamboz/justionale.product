@@ -8,9 +8,14 @@ from plone.supermodel import model
 # from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
 from zope.interface import implementer
+from Products.Five import BrowserView
+# from Acquisition import aq_inner
+from plone import api
 
 
 from justionale.product import _
+# import pdb; pdb.set_trace()
+# from justionale.product import IOrdine
 
 
 class IProdotto(model.Schema):
@@ -32,3 +37,18 @@ class IProdotto(model.Schema):
 class Prodotto(Item):
     """
     """
+
+
+class ProdottoView(BrowserView):
+
+    def ordini(self):
+        """Return a catalog search result of sessions to show."""
+
+        # context = aq_inner(self.context)
+        catalog = api.portal.get_tool(name='portal_catalog')
+
+        # this returns a catalog search (or a list of brains?)
+        return catalog(
+            # object_provides=IOrdine.__identifier__,
+            # path='/'.join(context.getPhysicalPath()),
+            sort_on='sortable_title')

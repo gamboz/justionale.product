@@ -3,6 +3,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="justionale.product">
 
   <i18n:registerTranslations directory="locales" />
@@ -43,9 +44,16 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <include package=".vocabularies" />
+    <!-- <include package=".vocabularies" /> -->
 
-
-    <include package=".vocabularies" />
+    <!-- custom view for "Prodotto" -->
+    <browser:page
+        name="view"
+        for="justionale.product.content.prodotto.IProdotto"
+        class="justionale.product.content.prodotto.ProdottoView"
+        template="templates/prodottoview.pt"
+        permission="zope2.View"
+        />
 
 
 </configure>
